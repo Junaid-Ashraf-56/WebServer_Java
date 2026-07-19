@@ -1,0 +1,41 @@
+Phase 1: Networking Foundation
+    ✅ Task 1: Build a Single Client TCP Server (Done)
+    ✅ Task 2: Handle Multiple Messages from One Client (Done)
+    ✅ Task 3: Handle Multiple Clients Using a Thread Pool
+    ✅ Task 4: Graceful Client Disconnect
+    ✅ Task 5: Graceful Server Shutdown
+Phase 2: HTTP Foundation
+    Task 6: Understand the HTTP/1.1 Request Format
+    Task 7: Read the Raw HTTP Request from the Socket
+    Task 8: Parse the Request Line
+    Task 9: Parse HTTP Headers
+    Task 10: Parse Query Parameters
+    Task 11: Parse the Request Body
+Phase 3: Response System
+    Task 12: Build an HttpResponse Model
+    Task 13: Generate a Valid HTTP Response
+    Task 14: Return Different Status Codes (200, 404, 500...)
+Phase 4: Routing
+    Task 15: Design the Router
+    Task 16: Route Registration
+    Task 17: Implement GET Endpoints
+    Task 18: Implement POST Endpoints
+    Task 19: Support Path Parameters
+Phase 5: Middleware
+    Task 20: Design the Middleware Chain
+    Task 21: Logging Middleware
+    Task 22: Validation Middleware
+    Task 23: Request ID Middleware
+Phase 6: Reliability
+    Task 24: Global Exception Handler
+    Task 25: Request Size Limits
+    Task 26: Socket Timeouts
+    Task 27: Graceful Shutdown
+    Task 28: Static File Server
+Phase 7: Production Features
+    Task 29: Configuration System
+    Task 30: Unit Tests
+    Task 31: Integration Tests
+    Task 32: Docker Support
+    Task 33: Load Testing
+    Task 34: Benchmarking
