@@ -10,12 +10,11 @@ class Main{
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(9090);
-        System.out.print("Server is running");
+        System.out.println("Server is running");
 
         while (!serverSocket.isClosed()){
             Socket client = serverSocket.accept();
-            System.out.println();
-            System.out.print("request accepted");
+            System.out.println("request accepted");
 
             ClientHandler task = new ClientHandler(client);
 

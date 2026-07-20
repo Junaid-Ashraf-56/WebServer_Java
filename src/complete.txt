@@ -5,12 +5,12 @@ Phase 1: Networking Foundation
     ✅ Task 4: Graceful Client Disconnect
     ✅ Task 5: Graceful Server Shutdown
 Phase 2: HTTP Foundation
-    Task 6: Understand the HTTP/1.1 Request Format
-    Task 7: Read the Raw HTTP Request from the Socket
-    Task 8: Parse the Request Line
-    Task 9: Parse HTTP Headers
-    Task 10: Parse Query Parameters
-    Task 11: Parse the Request Body
+    ✅ Task 6: Understand the HTTP/1.1 Request request.HttpRequestParser
+    ✅ Task 7: Read the Raw HTTP Request from the Socket
+    ✅ Task 8: Parse the Request Line
+    ✅ Task 9: Parse HTTP Headers
+    ✅ Task 10: Parse Query Parameters
+    ✅ Task 11: Parse the Request Body
 Phase 3: Response System
     Task 12: Build an HttpResponse Model
     Task 13: Generate a Valid HTTP Response

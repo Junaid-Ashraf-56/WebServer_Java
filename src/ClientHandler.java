@@ -1,6 +1,8 @@
+import request.HttpRequest;
+import request.HttpRequestParser;
+
 import java.io.*;
 import java.net.Socket;
-import java.util.Objects;
 
 
 public class ClientHandler implements Runnable{
@@ -12,23 +14,18 @@ public class ClientHandler implements Runnable{
     }
 
     public void clientHandler() throws IOException{
-        BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        PrintWriter out =  new PrintWriter(client.getOutputStream(),true);
-
-        String message;
-
-        while ((message = in.readLine()) != null) {
-            System.out.println();
-
-            if (Objects.equals(message, "/q")) {
-                System.out.print("connection close");
-                break;
-            }
-
-            System.out.print(message);
-            out.println("request accepted");
-            System.out.println();
+        try {
+            HttpRequestParser parser = new HttpRequestParser();
+            HttpRequest request = parser.parseData(
+                    client.getInputStream()
+            );
+            System.out.println("method " + request.getMethod());
+            System.out.println("path "+ request.getPath());
+            System.out.println("http version "+ request.getHttpVersion());
+        }catch (Exception e){
+            System.out.println("request problem "+ e.getMessage());
         }
+
     }
 
     @Override
