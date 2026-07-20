@@ -39,3 +39,54 @@ Phase 7: Production Features
     Task 32: Docker Support
     Task 33: Load Testing
     Task 34: Benchmarking
+
+
+WebServer
+│
+├── src
+│   │
+│   ├── Main.java
+│   ├── ClientHandler.java
+│   │
+│   ├── http
+│   │   │
+│   │   ├── request
+│   │   │   ├── HttpRequest.java
+│   │   │   └── HttpRequestParser.java
+│   │   │
+│   │   ├── response
+│   │   │   ├── HttpResponse.java
+│   │   │   ├── HttpResponseBuilder.java
+│   │   │   ├── HttpStatus.java
+│   │   │   └── ResponseWriter.java
+│   │   │
+│   │   └── common
+│   │       ├── HttpMethod.java
+│   │       ├── HttpVersion.java
+│   │       └── HeaderNames.java
+│   │
+│   ├── router
+│   │   ├── Router.java
+│   │   ├── Route.java
+│   │   └── RouteMatcher.java
+│   │
+│   ├── handler
+│   │   ├── RequestHandler.java
+│   │   ├── GetHandler.java
+│   │   ├── PostHandler.java
+│   │   └── StaticFileHandler.java
+│   │
+│   ├── middleware
+│   │   ├── Middleware.java
+│   │   ├── LoggingMiddleware.java
+│   │   ├── ValidationMiddleware.java
+│   │   └── AuthenticationMiddleware.java
+│   │
+│   ├── server
+│   │   ├── ThreadPoolManager.java
+│   │   ├── ServerConfig.java
+│   │   └── GracefulShutdown.java
+│   │
+│   └── util
+│       ├── UrlDecoder.java
+│       └── Constants.java
