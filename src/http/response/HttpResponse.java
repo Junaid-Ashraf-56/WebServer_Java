@@ -1,6 +1,5 @@
-package response;
+package http.response;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class HttpResponse {
@@ -18,23 +17,12 @@ public class HttpResponse {
         return status;
     }
 
-    public void setStatus(HttpStatus status) {
-        this.status = status;
-    }
-
     public Map<String, String> getHeaders() {
         return headers;
-    }
-
-    public void setHeaders(Map<String, String> headers) {
-        this.headers = headers;
     }
 
     public String getBody() {
         return body;
     }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
 }

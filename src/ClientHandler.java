@@ -1,5 +1,9 @@
-import request.HttpRequest;
-import request.HttpRequestParser;
+import handler.HelloHandler;
+import handler.UsersHandler;
+import http.request.HttpRequest;
+import http.request.HttpRequestParser;
+import http.response.HttpResponse;
+import router.RouteMatcher;
 
 import java.io.*;
 import java.net.Socket;
@@ -19,11 +23,15 @@ public class ClientHandler implements Runnable{
             HttpRequest request = parser.parseData(
                     client.getInputStream()
             );
-            System.out.println("method " + request.getMethod());
-            System.out.println("path "+ request.getPath());
-            System.out.println("http version "+ request.getHttpVersion());
+
+            RouteMatcher route = new RouteMatcher();
+            HttpResponse response = route.incomingRequest(request);
+            System.out.println("HTTP/1.1 200"+response.getStatus());
+            System.out.println(response.getHeaders().get("accept"));
+            System.out.println(response.getBody());
+
         }catch (Exception e){
-            System.out.println("request problem "+ e.getMessage());
+            System.out.println("http.request problem "+ e.getMessage());
         }
 
     }
