@@ -1,4 +1,4 @@
-package request;
+package http.request;
 
 import java.util.Map;
 
@@ -22,48 +22,18 @@ public class HttpRequest {
     public String getMethod() {
         return method;
     }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
     public String getPath() {
         return path;
     }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
     public String getHttpVersion() {
         return httpVersion;
     }
-
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
-    }
-
-    public Map<String, String> getHeader() {
-        return header;
-    }
-
-    public void setHeader(Map<String, String> header) {
-        this.header = header;
-    }
-
+    public Map<String, String> getHeader() {return header;}
     public Map<String, String> getQueryParameter() {
         return queryParameter;
     }
-
-    public void setQueryParameter(Map<String, String> queryParameter) {
-        this.queryParameter = queryParameter;
-    }
-
     public String getBody() {
         return body;
     }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
 }

@@ -14,7 +14,7 @@ class Main{
 
         while (!serverSocket.isClosed()){
             Socket client = serverSocket.accept();
-            System.out.println("request accepted");
+            System.out.println("http.request accepted");
 
             ClientHandler task = new ClientHandler(client);
 

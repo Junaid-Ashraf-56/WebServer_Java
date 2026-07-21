@@ -1,4 +1,4 @@
-package response;
+package http.response;
 
 public enum HttpStatus {
     OK,
