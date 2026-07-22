@@ -23,3 +23,18 @@ public class UsersHandler implements RequestHandler{
         }
     }
 }
+//Example:
+//
+//Request:
+//
+//Accept: application/json
+//User-Agent: Chrome
+//Host: localhost
+//
+//Response:
+//
+//Content-Type: text/plain
+//Content-Length: 22
+//Connection: close
+//
+//So eventually your handlers should create a new header map for the response instead of copying the request headers.

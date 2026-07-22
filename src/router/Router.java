@@ -3,6 +3,8 @@ package router;
 import handler.HelloHandler;
 import handler.RequestHandler;
 import handler.UsersHandler;
+import http.request.HttpRequest;
+import http.response.HttpResponse;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,15 +12,6 @@ import java.util.Map;
 public class Router {
 
     private final Map<String, RequestHandler> routes = new HashMap<>();
-
-    public Router() {
-        seedData();
-    }
-
-    private void seedData() {
-        routes.put("GET /hello", new HelloHandler());
-        routes.put("GET /users", new UsersHandler());
-    }
 
     public boolean register(
             String method,
@@ -43,6 +36,16 @@ public class Router {
     public RequestHandler find(String method, String path) {
         String key = createKey(method, path);
         return routes.get(key);
+    }
+
+    public HttpResponse incomingRequest(HttpRequest request){
+        if (request.getPath().equals("/hello")){
+            HelloHandler helloHandler = new HelloHandler();
+            return helloHandler.handle(request);
+        }else {
+            UsersHandler usersHandler = new UsersHandler();
+            return usersHandler.handle(request);
+        }
     }
 
     private String createKey(String method, String path) {
