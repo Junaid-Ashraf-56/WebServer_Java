@@ -1,12 +1,10 @@
-import handler.HelloHandler;
-import handler.UsersHandler;
-import http.request.HttpRequest;
-import http.request.HttpRequestParser;
+import http.request.*;
 import http.response.HttpResponse;
-import router.RouteMatcher;
+import router.Router;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.Objects;
 
 
 public class ClientHandler implements Runnable{
@@ -24,9 +22,15 @@ public class ClientHandler implements Runnable{
                     client.getInputStream()
             );
 
-            RouteMatcher route = new RouteMatcher();
-            HttpResponse response = route.incomingRequest(request);
-            System.out.println("HTTP/1.1 200"+response.getStatus());
+            Router router = new Router();
+            HttpResponse response = router.incomingRequest(request);
+            String number = response.getStatus().toString();
+            if (Objects.equals(number, "OK")){
+                number = "200";
+            }else {
+                number = "404";
+            }
+            System.out.println("HTTP/1.1 "+ number+" " +response.getStatus());
             System.out.println(response.getHeaders().get("accept"));
             System.out.println(response.getBody());
 
