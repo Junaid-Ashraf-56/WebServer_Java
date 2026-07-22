@@ -1,14 +1,26 @@
 package http.response;
 
 public enum HttpStatus {
-    OK,
-    CREATED,
-    BAD_REQUEST,
-    NOT_FOUND,
-    INTERNAL_SERVER_ERROR
+
+    OK(200, "OK"),
+    CREATED(201, "Created"),
+    BAD_REQUEST(400, "Bad Request"),
+    NOT_FOUND(404, "Not Found"),
+    INTERNAL_SERVER_ERROR(500, "Internal Server Error");
+
+    private final int statusCode;
+    private final String reasonPhrase;
+
+    HttpStatus(int statusCode, String reasonPhrase) {
+        this.statusCode = statusCode;
+        this.reasonPhrase = reasonPhrase;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public String getReasonPhrase() {
+        return reasonPhrase;
+    }
 }
-//OK                    → 200
-//CREATED              → 201
-//BAD_REQUEST          → 400
-//NOT_FOUND            → 404
-//INTERNAL_SERVER_ERROR → 500

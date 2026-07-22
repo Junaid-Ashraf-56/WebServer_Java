@@ -1,18 +1,20 @@
 import http.request.*;
 import http.response.HttpResponse;
+import http.response.ResponseWriter;
 import router.Router;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Objects;
 
 
 public class ClientHandler implements Runnable{
 
     private final Socket client;
+    private final Router router;
 
-    public ClientHandler(Socket client) {
+    public ClientHandler(Socket client, Router router) {
         this.client = client;
+        this.router = router;
     }
 
     public void clientHandler() throws IOException{
@@ -22,18 +24,13 @@ public class ClientHandler implements Runnable{
                     client.getInputStream()
             );
 
-            Router router = new Router();
-            HttpResponse response = router.incomingRequest(request);
-            String number = response.getStatus().toString();
-            if (Objects.equals(number, "OK")){
-                number = "200";
-            }else {
-                number = "404";
-            }
-            System.out.println("HTTP/1.1 "+ number+" " +response.getStatus());
-            System.out.println(response.getHeaders().get("accept"));
-            System.out.println(response.getBody());
 
+            HttpResponse response = router.incomingRequest(request);
+
+            ResponseWriter.write(
+                    response,
+                    client.getOutputStream()
+            );
         }catch (Exception e){
             System.out.println("http.request problem "+ e.getMessage());
         }

@@ -5,6 +5,7 @@ import handler.RequestHandler;
 import handler.UsersHandler;
 import http.request.HttpRequest;
 import http.response.HttpResponse;
+import http.response.HttpStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,14 @@ public class Router {
 
     private final Map<String, RequestHandler> routes = new HashMap<>();
 
+    public Router() {
+        seedData();
+    }
+
+    public void seedData(){
+        routes.put("/users",new UsersHandler());
+        routes.put("/hello",new HelloHandler());
+    }
     public boolean register(
             String method,
             String path,
@@ -39,12 +48,20 @@ public class Router {
     }
 
     public HttpResponse incomingRequest(HttpRequest request){
-        if (request.getPath().equals("/hello")){
-            HelloHandler helloHandler = new HelloHandler();
-            return helloHandler.handle(request);
-        }else {
-            UsersHandler usersHandler = new UsersHandler();
-            return usersHandler.handle(request);
+        if (routes.containsKey(request.getPath())){
+            if (request.getPath().equals("/hello")){
+                HelloHandler helloHandler = new HelloHandler();
+                return helloHandler.handle(request);
+            }else{
+                UsersHandler usersHandler = new UsersHandler();
+                return usersHandler.handle(request);
+            }
+        }else{
+            return new HttpResponse(
+                    HttpStatus.NOT_FOUND,
+                    null,
+                    null
+            );
         }
     }
 

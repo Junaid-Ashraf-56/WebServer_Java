@@ -7,6 +7,7 @@ public class HttpResponse {
     Map<String, String> headers;
     String body;
 
+
     public HttpResponse(HttpStatus status, Map<String, String> headers, String body) {
         this.status = status;
         this.headers = headers;
