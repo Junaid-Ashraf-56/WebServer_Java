@@ -23,7 +23,7 @@ public class UsersHandler implements RequestHandler{
         }else {
             String body = SeedData.USER_CREATED;
             header.put("content-type","text/json");
-            return new HttpResponse(HttpStatus.OK,header,body);
+            return new HttpResponse(HttpStatus.CREATED,header,body);
         }
     }
 }
