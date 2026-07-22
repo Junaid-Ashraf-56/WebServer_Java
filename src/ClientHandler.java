@@ -32,7 +32,7 @@ public class ClientHandler implements Runnable{
                     client.getOutputStream()
             );
         }catch (Exception e){
-            System.out.println("http.request problem "+ e.getMessage());
+            System.out.println("request problem "+ e.getMessage());
         }
 
     }
