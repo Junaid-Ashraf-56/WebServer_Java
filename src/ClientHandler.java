@@ -1,6 +1,7 @@
 import http.request.*;
 import http.response.HttpResponse;
 import http.response.ResponseWriter;
+import middleware.MiddlewareChain;
 import router.Router;
 
 import java.io.*;
@@ -10,11 +11,11 @@ import java.net.Socket;
 public class ClientHandler implements Runnable{
 
     private final Socket client;
-    private final Router router;
+    private final MiddlewareChain middlewareChain;
 
-    public ClientHandler(Socket client, Router router) {
+    public ClientHandler(Socket client, MiddlewareChain middlewareChain) {
         this.client = client;
-        this.router = router;
+        this.middlewareChain = middlewareChain;
     }
 
     public void clientHandler() throws IOException{
@@ -24,15 +25,14 @@ public class ClientHandler implements Runnable{
                     client.getInputStream()
             );
 
-
-            HttpResponse response = router.incomingRequest(request);
+            HttpResponse response = middlewareChain.handle(request);
 
             ResponseWriter.write(
                     response,
                     client.getOutputStream()
             );
         }catch (Exception e){
-            System.out.println("http.request problem "+ e.getMessage());
+            System.out.println("request problem "+ e.getMessage());
         }
 
     }

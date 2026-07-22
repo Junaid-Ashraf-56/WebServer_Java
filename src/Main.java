@@ -1,3 +1,4 @@
+import middleware.MiddlewareChain;
 import router.Router;
 
 import java.io.IOException;
@@ -13,14 +14,13 @@ class Main{
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(9090);
         System.out.println("Server is running");
-
         Router router = new Router();
-
+        MiddlewareChain middlewareChain = new MiddlewareChain(router);
         while (!serverSocket.isClosed()){
             Socket client = serverSocket.accept();
             System.out.println("request accepted");
 
-            ClientHandler task = new ClientHandler(client,router);
+            ClientHandler task = new ClientHandler(client,middlewareChain);
 
             threadPoolExecutor.submit(task);
 

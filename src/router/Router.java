@@ -1,11 +1,8 @@
 package router;
 
-import handler.HelloHandler;
-import handler.RequestHandler;
-import handler.UsersHandler;
+import handler.*;
 import http.request.HttpRequest;
-import http.response.HttpResponse;
-import http.response.HttpStatus;
+import http.response.*;
 
 import java.util.HashMap;
 import java.util.Map;
