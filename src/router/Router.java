@@ -3,9 +3,7 @@ package router;
 import handler.*;
 import http.request.HttpRequest;
 import http.response.*;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Router {
 
@@ -16,8 +14,10 @@ public class Router {
     }
 
     public void seedData(){
-        routes.put("/users",new UsersHandler());
-        routes.put("/hello",new HelloHandler());
+        routes.put("GET /users",new UsersHandler());
+        routes.put("POST /users",new UsersHandler());
+        routes.put("GET /hello",new HelloHandler());
+        routes.put("POST /hello",new HelloHandler());
     }
     public boolean register(
             String method,
@@ -46,18 +46,18 @@ public class Router {
 
     public HttpResponse incomingRequest(HttpRequest request){
         if (routes.containsKey(request.getPath())){
-            if (request.getPath().equals("/hello")){
-                HelloHandler helloHandler = new HelloHandler();
-                return helloHandler.handle(request);
-            }else{
-                UsersHandler usersHandler = new UsersHandler();
-                return usersHandler.handle(request);
-            }
+            RequestHandler handler = routes.get(request.getPath());
+            return handler.handle(request);
         }else{
+            Map<String, String> headers = new HashMap<>();
+
+            headers.put("content-type", "application/json");
+            headers.put("connection", "close");
+
             return new HttpResponse(
                     HttpStatus.NOT_FOUND,
-                    null,
-                    null
+                    headers,
+                    "{\"error\":\"Route not found\"}"
             );
         }
     }

@@ -1,8 +1,8 @@
+import error.GlobalExceptionHandler;
 import http.request.*;
 import http.response.HttpResponse;
 import http.response.ResponseWriter;
 import middleware.MiddlewareChain;
-import router.Router;
 
 import java.io.*;
 import java.net.Socket;
@@ -32,7 +32,10 @@ public class ClientHandler implements Runnable{
                     client.getOutputStream()
             );
         }catch (Exception e){
-            System.out.println("request problem "+ e.getMessage());
+            GlobalExceptionHandler globalExceptionHandler
+                    = new GlobalExceptionHandler();
+            HttpResponse response =  globalExceptionHandler.handle(e);
+            ResponseWriter.write(response,client.getOutputStream());
         }
 
     }
