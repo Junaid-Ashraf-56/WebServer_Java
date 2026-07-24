@@ -1,8 +1,8 @@
-package main.java.router;
+package router;
 
-import main.java.handler.*;
-import main.java.http.request.HttpRequest;
-import main.java.http.response.*;
+import handler.*;
+import http.request.HttpRequest;
+import http.response.*;
 import java.util.*;
 
 public class Router {

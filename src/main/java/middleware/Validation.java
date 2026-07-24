@@ -1,8 +1,8 @@
-package main.java.middleware;
+package middleware;
 
-import main.java.http.request.HttpRequest;
-import main.java.http.response.HttpResponse;
-import main.java.http.response.HttpStatus;
+import http.request.HttpRequest;
+import http.response.HttpResponse;
+import http.response.HttpStatus;
 
 import java.util.HashMap;
 import java.util.Map;

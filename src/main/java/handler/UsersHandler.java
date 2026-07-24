@@ -1,9 +1,9 @@
-package main.java.handler;
+package handler;
 
-import main.java.data.SeedData;
-import main.java.http.request.HttpRequest;
-import main.java.http.response.HttpResponse;
-import main.java.http.response.HttpStatus;
+import data.SeedData;
+import http.request.HttpRequest;
+import http.response.HttpResponse;
+import http.response.HttpStatus;
 
 import java.util.*;
 

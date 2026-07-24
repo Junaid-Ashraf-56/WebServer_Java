@@ -1,10 +1,10 @@
-package main.java.server;
+package server;
 
-import main.java.error.GlobalExceptionHandler;
-import main.java.http.request.*;
-import main.java.http.response.HttpResponse;
-import main.java.http.response.ResponseWriter;
-import main.java.middleware.MiddlewareChain;
+import error.GlobalExceptionHandler;
+import http.request.*;
+import http.response.HttpResponse;
+import http.response.ResponseWriter;
+import middleware.MiddlewareChain;
 
 import java.io.*;
 import java.net.Socket;

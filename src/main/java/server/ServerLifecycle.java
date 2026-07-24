@@ -1,4 +1,4 @@
-package main.java.server;
+package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -19,7 +19,7 @@ public class ServerLifecycle {
             }
         } catch (IOException exception) {
             System.out.println(
-                    "Could not close main.java.server socket: "
+                    "Could not close server socket: "
                             + exception.getMessage()
             );
         }

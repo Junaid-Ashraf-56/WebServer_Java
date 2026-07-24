@@ -1,7 +1,7 @@
-package main.java.middleware;
+package middleware;
 
-import main.java.http.request.HttpRequest;
-import main.java.http.response.HttpResponse;
+import http.request.HttpRequest;
+import http.response.HttpResponse;
 
 public class Logging implements Middleware {
 

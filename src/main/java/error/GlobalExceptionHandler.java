@@ -1,7 +1,7 @@
-package main.java.error;
+package error;
 
-import main.java.http.response.HttpResponse;
-import main.java.http.response.HttpStatus;
+import http.response.HttpResponse;
+import http.response.HttpStatus;
 
 import java.io.IOException;
 import java.util.HashMap;

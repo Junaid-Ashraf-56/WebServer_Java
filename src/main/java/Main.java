@@ -1,9 +1,7 @@
-package main.java;
-
-import main.java.middleware.MiddlewareChain;
-import main.java.router.Router;
-import main.java.server.ClientHandler;
-import main.java.server.ServerLifecycle;
+import middleware.MiddlewareChain;
+import router.Router;
+import server.ClientHandler;
+import server.ServerLifecycle;
 
 import java.io.IOException;
 import java.net.*;
