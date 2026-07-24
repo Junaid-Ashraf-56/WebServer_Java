@@ -1,4 +1,4 @@
-package main.java.http.request;
+package http.request;
 
 import java.io.*;
 import java.net.URLDecoder;
@@ -20,7 +20,7 @@ public class HttpRequestParser {
         String[] requestParts = requestLine.split(" ",3);
 
         if (requestParts.length!=3){
-            throw new IllegalArgumentException("Invalid main.java.http main.java.http.request line");
+            throw new IllegalArgumentException("Invalid http http.request line");
         }
 
         String method = requestParts[0];

@@ -1,7 +1,7 @@
-package main.java.handler;
+package handler;
 
-import main.java.http.request.HttpRequest;
-import main.java.http.response.HttpResponse;
+import http.request.HttpRequest;
+import http.response.HttpResponse;
 
 public interface RequestHandler {
     HttpResponse handle(HttpRequest request);

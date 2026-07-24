@@ -1,4 +1,4 @@
-package main.java.http.response;
+package http.response;
 
 public enum HttpStatus {
 
