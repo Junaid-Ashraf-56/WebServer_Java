@@ -1,4 +1,4 @@
-package http.response;
+package main.java.http.response;
 
 import java.util.Map;
 

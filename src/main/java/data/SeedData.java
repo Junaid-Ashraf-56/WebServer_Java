@@ -1,4 +1,4 @@
-package data;
+package main.java.data;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public class SeedData {
     }
 
     public static final String HELLO_MESSAGE =
-            "Hello from my server";
+            "Hello from my main.java.server";
 
     public static final List<String> USERS = List.of(
             "Junaid",

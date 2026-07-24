@@ -1,6 +1,6 @@
-package router;
+package main.java.router;
 
-import handler.RequestHandler;
+import main.java.handler.RequestHandler;
 
 public class Route {
     String httpMethod;

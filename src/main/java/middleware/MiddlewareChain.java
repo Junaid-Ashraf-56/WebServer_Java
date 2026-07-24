@@ -1,8 +1,8 @@
-package middleware;
+package main.java.middleware;
 
-import http.request.HttpRequest;
-import http.response.HttpResponse;
-import router.Router;
+import main.java.http.request.HttpRequest;
+import main.java.http.response.HttpResponse;
+import main.java.router.Router;
 
 import java.util.List;
 

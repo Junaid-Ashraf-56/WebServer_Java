@@ -1,7 +1,7 @@
-package error;
+package main.java.error;
 
-import http.response.HttpResponse;
-import http.response.HttpStatus;
+import main.java.http.response.HttpResponse;
+import main.java.http.response.HttpStatus;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -14,27 +14,27 @@ public class GlobalExceptionHandler {
         if (exception instanceof IllegalArgumentException) {
             return buildResponse(
                     HttpStatus.BAD_REQUEST,
-                    "{\"error\":\"" + exception.getMessage() + "\"}"
+                    "{\"main.java.error\":\"" + exception.getMessage() + "\"}"
             );
         }
 
         if (exception instanceof IOException) {
             return buildResponse(
                     HttpStatus.INTERNAL_SERVER_ERROR,
-                    "{\"error\":\"I/O Error\"}"
+                    "{\"main.java.error\":\"I/O Error\"}"
             );
         }
 
         if (exception instanceof NullPointerException) {
             return buildResponse(
                     HttpStatus.INTERNAL_SERVER_ERROR,
-                    "{\"error\":\"Unexpected null value\"}"
+                    "{\"main.java.error\":\"Unexpected null value\"}"
             );
         }
 
         return buildResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR,
-                "{\"error\":\"Internal Server Error\"}"
+                "{\"main.java.error\":\"Internal Server Error\"}"
         );
     }
 

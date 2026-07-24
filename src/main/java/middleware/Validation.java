@@ -1,8 +1,8 @@
-package middleware;
+package main.java.middleware;
 
-import http.request.HttpRequest;
-import http.response.HttpResponse;
-import http.response.HttpStatus;
+import main.java.http.request.HttpRequest;
+import main.java.http.response.HttpResponse;
+import main.java.http.response.HttpStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class Validation implements Middleware {
                 !SUPPORTED_METHODS.contains(request.getMethod().toUpperCase())) {
             return error(
                     HttpStatus.BAD_REQUEST,
-                    "{\"error\":\"Unsupported or missing HTTP method\"}"
+                    "{\"main.java.error\":\"Unsupported or missing HTTP method\"}"
             );
         }
 
@@ -29,14 +29,14 @@ public class Validation implements Middleware {
                 !request.getPath().startsWith("/")) {
             return error(
                     HttpStatus.BAD_REQUEST,
-                    "{\"error\":\"Invalid request path\"}"
+                    "{\"main.java.error\":\"Invalid request path\"}"
             );
         }
 
         if (!"HTTP/1.1".equals(request.getHttpVersion())) {
             return error(
                     HttpStatus.BAD_REQUEST,
-                    "{\"error\":\"Only HTTP/1.1 is supported\"}"
+                    "{\"main.java.error\":\"Only HTTP/1.1 is supported\"}"
             );
         }
 
@@ -44,7 +44,7 @@ public class Validation implements Middleware {
                 (request.getBody() == null || request.getBody().isBlank())) {
             return error(
                     HttpStatus.BAD_REQUEST,
-                    "{\"error\":\"POST request body is required\"}"
+                    "{\"main.java.error\":\"POST request body is required\"}"
             );
         }
 

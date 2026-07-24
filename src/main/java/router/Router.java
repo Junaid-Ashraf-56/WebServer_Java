@@ -1,8 +1,8 @@
-package router;
+package main.java.router;
 
-import handler.*;
-import http.request.HttpRequest;
-import http.response.*;
+import main.java.handler.*;
+import main.java.http.request.HttpRequest;
+import main.java.http.response.*;
 import java.util.*;
 
 public class Router {
@@ -44,22 +44,27 @@ public class Router {
         return routes.get(key);
     }
 
-    public HttpResponse incomingRequest(HttpRequest request){
-        if (routes.containsKey(request.getPath())){
-            RequestHandler handler = routes.get(request.getPath());
-            return handler.handle(request);
-        }else{
-            Map<String, String> headers = new HashMap<>();
+    public HttpResponse incomingRequest(HttpRequest request) {
+        String key = createKey(
+                request.getMethod(),
+                request.getPath()
+        );
 
+        RequestHandler handler = routes.get(key);
+
+        if (handler == null) {
+            Map<String, String> headers = new HashMap<>();
             headers.put("content-type", "application/json");
             headers.put("connection", "close");
 
             return new HttpResponse(
                     HttpStatus.NOT_FOUND,
                     headers,
-                    "{\"error\":\"Route not found\"}"
+                    "{\"main.java.error\":\"Route not found\"}"
             );
         }
+
+        return handler.handle(request);
     }
 
     private String createKey(String method, String path) {
